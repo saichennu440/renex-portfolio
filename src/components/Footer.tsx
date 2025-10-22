@@ -9,9 +9,13 @@ const Footer: React.FC = () => {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mr-3">
-                <div className="w-6 h-6 bg-white rounded-sm transform rotate-45"></div>
-              </div>
+              <div className="w-15 h-15  rounded-lg flex items-center justify-center mr-3">
+              <img
+                src="/logo.png"
+                alt="Logo"
+                className="w-12 h-12 object-contain rounded-sm"
+              />
+            </div>
               <span className="text-xl font-bold">Renex_Design</span>
             </div>
             <p className="text-gray-400 mb-6 max-w-md">
@@ -34,7 +38,7 @@ const Footer: React.FC = () => {
                 className="flex items-center text-gray-400 hover:text-primary transition-colors duration-200"
               >
                 <Mail className="w-5 h-5 mr-2" />
-                hello@renex-design.com
+                renexdesign@gmail.com
               </a>
             </div>
           </div>

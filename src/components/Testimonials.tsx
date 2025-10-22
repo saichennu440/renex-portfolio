@@ -47,13 +47,13 @@ const Testimonials: React.FC = () => {
   };
 
   return (
-    <section id="testimonials" className="py-20 lg:py-32 bg-gradient-to-br from-gray-50 to-white">
+    <section id="testimonials" className="py-20 lg:py-32 bg-gradient-to-tr from-sky-400 to-fuchsia-800">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-on-scroll">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             What our <span className="text-primary">clients say</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Don't just take our word for it. Here's what some of our amazing clients have to say about working with us.
           </p>
         </div>

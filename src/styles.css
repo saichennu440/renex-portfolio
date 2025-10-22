@@ -7,8 +7,9 @@
 
 /* CSS Variables for easy customization */
 :root {
-  --color-primary: #14B8A6; /* Teal - can be changed to electric blue #3B82F6 */
-  --color-primary-dark: #0F766E;
+  --color-primary: black;
+  //--color-secondaary: #8613ed;  /* Teal - can be changed to electric blue #3B82F6 */
+  --color-primary-dark: #8613ed;
   --color-primary-light: #5EEAD4;
   
   --color-secondary: #6366F1;
@@ -99,7 +100,7 @@ h6 { font-size: 1.125rem; }
 }
 
 .hover\:text-primary:hover {
-  color: var(--color-primary);
+  color: var(--color-);
 }
 
 .focus\:ring-primary:focus {

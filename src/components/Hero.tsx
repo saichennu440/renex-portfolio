@@ -24,7 +24,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
   return (
     <section
       id="home"
-      className="py-20 lg:py-32 bg-gray-50"
+      className="py-20 lg:py-32 bg-gradient-to-tr from-sky-400 to-fuchsia-800"
       aria-label="Hero section"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,11 +54,11 @@ const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                 </a>
               </div> */}
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-50 leading-tight mb-6">
                 We build websites that <span className="text-primary">get you customers</span>
               </h1>
 
-              <p className="text-gray-600 text-base sm:text-lg max-w-2xl mb-8">
+              <p className="text-gray-50 text-base sm:text-lg max-w-2xl mb-8">
                 Fast, responsive websites for small businesses, creators and
                 entrepreneurs. Clean design, clear UX and conversion-focused
                 development — from brochure sites to e-commerce.
@@ -82,7 +82,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               </div>
 
               <div className="mt-8 text-sm text-gray-500">
-                <span className="font-medium text-gray-700">Starting at</span>{' '}
+                <span className="font-medium text-gray-500">Starting at</span>{' '}
                 <span className="ml-2 font-semibold">15,000</span>{' '}
                 <span className="text-gray-400">•</span>{' '}
                 <span className="ml-2">Free initial consultation</span>
@@ -93,13 +93,19 @@ const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           {/* Right column: visual / mockups */}
           <div className="lg:col-span-5">
             <div className="relative animate-on-scroll">
-              <div className="bg-gradient-to-tr from-primary/10 to-transparent rounded-2xl p-4 shadow-lg">
+              <div className="bg-gradient-to-tr from-primary/10 to-transparent rounded-2xl p-4 shadow-lg bg-white">
                 <div className="rounded-xl overflow-hidden bg-white">
-                  <img
-                    src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop"
-                    alt="Website mockup preview"
+                  <video
+                    src="/video.mp4"
                     className="w-full h-56 sm:h-64 object-cover"
-                  />
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+
                 </div>
 
                 <div className="mt-4 grid grid-cols-3 gap-3">
@@ -114,7 +120,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                     className="w-full h-20 object-cover rounded-lg"
                   />
                   <img
-                    src="https://images.pexels.com/photos/2101187/pexels-photo-2101187.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
+                    src="/hd1.jpg"
                     alt="Project thumbnail"
                     className="w-full h-20 object-cover rounded-lg"
                   />
@@ -122,13 +128,13 @@ const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               </div>
 
               {/* subtle badge */}
-              <div className="absolute -bottom-3 right-3 bg-white rounded-full px-3 py-1 text-xs font-medium shadow-sm flex items-center space-x-2">
-                <span className="text-gray-600">Featured on</span>
+              <div className="absolute -bottom-3 right-3 bg-slate-950 rounded-full px-3 py-1 text-xs font-medium shadow-sm flex items-center space-x-2">
+                <span className="text-gray-50">Featured on</span>
                 <a
                   href="https://www.instagram.com/renex_design"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center text-gray-700 hover:text-primary"
+                  className="inline-flex items-center text-gray-50 hover:text-primary"
                   aria-label="Open Renex_Design Instagram"
                 >
                   <Instagram className="w-4 h-4" />

@@ -10,7 +10,7 @@ const Pricing: React.FC<PricingProps> = ({ onOpenContact }) => {
     {
       id: 'starter',
       name: 'Starter',
-      price: '$1,500',
+      price: '₹10,000',
       description: 'Perfect for small businesses and personal brands',
       features: [
         'Up to 5 pages',
@@ -25,7 +25,7 @@ const Pricing: React.FC<PricingProps> = ({ onOpenContact }) => {
     {
       id: 'business',
       name: 'Business',
-      price: '$3,500',
+      price: '₹25,000',
       description: 'Ideal for growing businesses and online stores',
       features: [
         'Up to 10 pages',
@@ -42,7 +42,7 @@ const Pricing: React.FC<PricingProps> = ({ onOpenContact }) => {
     {
       id: 'pro',
       name: 'Pro',
-      price: '$6,500',
+      price: '₹35,000',
       description: 'Complete solution for established businesses',
       features: [
         'Unlimited pages',

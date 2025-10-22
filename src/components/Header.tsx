@@ -28,16 +28,20 @@ const Header: React.FC<HeaderProps> = ({ onOpenContact }) => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
+      isScrolled ? 'bg-gradient-to-tr from-sky-400 to-fuchsia-800 backdrop-blur-sm shadow-sm' : 'bg-transparent'
     }`}>
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mr-3">
-              <div className="w-6 h-6 bg-white rounded-sm transform rotate-45"></div>
+            <div className="w-15 h-15  rounded-lg flex items-center justify-center mr-3">
+              <img
+                src="/logo.png"
+                alt="Logo"
+                className="w-12 h-12 object-contain rounded-sm"
+              />
             </div>
-            <span className="text-xl font-bold text-gray-900">Renex_Design</span>
+            <span className="text-xl font-bold text-gray-50">Renex_Design</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -46,7 +50,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenContact }) => {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-gray-700 hover:text-primary transition-colors duration-200 font-medium"
+                className="text-gray-50 hover:text-primary transition-colors duration-200 font-medium"
               >
                 {item.label}
               </a>
@@ -55,7 +59,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenContact }) => {
               href="https://www.instagram.com/renex_design" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-700 hover:text-primary transition-colors duration-200"
+              className="text-gray-50 hover:text-primary transition-colors duration-200"
               aria-label="Follow us on Instagram"
             >
               <Instagram className="w-5 h-5" />
@@ -71,7 +75,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenContact }) => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 text-gray-700 hover:text-primary transition-colors duration-200"
+            className="lg:hidden p-2 text-gray-50 hover:text-primary transition-colors duration-200"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -86,7 +90,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenContact }) => {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="block text-gray-700 hover:text-primary transition-colors duration-200 font-medium"
+                  className="block text-gray-50 hover:text-primary transition-colors duration-200 font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
@@ -97,7 +101,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenContact }) => {
                   href="https://www.instagram.com/renex_design" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center text-gray-700 hover:text-primary transition-colors duration-200"
+                  className="flex items-center text-50-700 hover:text-primary transition-colors duration-200"
                 >
                   <Instagram className="w-5 h-5 mr-2" />
                   @renex_design
