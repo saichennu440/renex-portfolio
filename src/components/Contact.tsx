@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Send, Phone, Mail, MapPin, Instagram, CheckCircle } from 'lucide-react';
-
 const Contact: React.FC = () => {
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mpqjgeov';
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -72,45 +73,44 @@ const Contact: React.FC = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  if (!validateForm()) return;
+  setIsSubmitting(true);
 
-    if (!validateForm()) return;
+  try {
+    const response = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        projectType: formData.projectType,
+        budget: formData.budget,
+        message: formData.message,
+        preferredContact: formData.preferredContact.join(', '),
+        _gotcha: formData.honeypot, // Formspree's built-in honeypot key
+      }),
+    });
 
-    setIsSubmitting(true);
-
-    try {
-      // Simulate form submission
-      // In a real application, you would send this to your backend
-      console.log('Form submitted:', formData);
-      
-      // TODO: Replace with actual form submission logic
-      // Example integrations:
-      // - Send email via EmailJS
-      // - Submit to Netlify Forms
-      // - Send to a serverless function
-      // - Save to a database
-      // - Forward to WhatsApp/Telegram via Zapier
-
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      setIsSubmitted(true);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        projectType: '',
-        budget: '',
-        message: '',
-        preferredContact: [],
-        honeypot: ''
-      });
-    } catch (error) {
-      console.error('Error submitting form:', error);
-    } finally {
-      setIsSubmitting(false);
+    if (!response.ok) {
+      const data = await response.json();
+      throw new Error(data?.errors?.[0]?.message || 'Submission failed');
     }
-  };
+
+    setIsSubmitted(true);
+    setFormData({ name: '', email: '', phone: '', projectType: '', budget: '', message: '', preferredContact: [], honeypot: '' });
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    setErrors({ submit: 'Something went wrong. Please try again or email us directly.' });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   if (isSubmitted) {
     return (
@@ -355,7 +355,7 @@ const Contact: React.FC = () => {
                   ))}
                 </div>
               </div>
-
+{errors.submit && <p className="text-red-500 text-sm mt-4">{errors.submit}</p>}
               <button
                 type="submit"
                 disabled={isSubmitting}

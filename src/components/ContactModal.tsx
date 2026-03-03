@@ -6,6 +6,7 @@ interface ContactModalProps {
 }
 
 const ContactModal: React.FC<ContactModalProps> = ({ onClose }) => {
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mpqjgeov';
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -57,24 +58,40 @@ const ContactModal: React.FC<ContactModalProps> = ({ onClose }) => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  if (!validateForm()) return;
+  setIsSubmitting(true);
 
-    if (!validateForm()) return;
+  try {
+    const response = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        projectType: formData.projectType,
+        message: formData.message,
+        _gotcha: formData.honeypot,
+      }),
+    });
 
-    setIsSubmitting(true);
-
-    try {
-      // Simulate form submission
-      console.log('Quick contact form submitted:', formData);
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setIsSubmitted(true);
-    } catch (error) {
-      console.error('Error submitting form:', error);
-    } finally {
-      setIsSubmitting(false);
+    if (!response.ok) {
+      const data = await response.json();
+      throw new Error(data?.errors?.[0]?.message || 'Submission failed');
     }
-  };
+
+    setIsSubmitted(true);
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    setErrors({ submit: 'Something went wrong. Please try again or email us directly.' });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
@@ -206,7 +223,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ onClose }) => {
                   />
                   {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
                 </div>
-
+{errors.submit && <p className="text-red-500 text-xs mt-3">{errors.submit}</p>}
                 <button
                   type="submit"
                   disabled={isSubmitting}
