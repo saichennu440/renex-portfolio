@@ -84,7 +84,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenContact }) => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-100 shadow-lg">
+          <div className=" border-gray-100 shadow-lg">
             <div className="px-4 py-6 space-y-4">
               {navItems.map((item) => (
                 <a
